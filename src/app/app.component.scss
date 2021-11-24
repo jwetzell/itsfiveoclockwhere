@@ -8,6 +8,26 @@
     padding: 0;
 }
 
+@media (max-width: 350px) { 
+    .timezone {
+        font-size: 1.0em;
+    }
+    
+    .time {
+        font-size: 0.5em
+    }
+}
+
+@media (min-width:350px) and (max-width: 500px) { 
+    .timezone {
+        font-size: 1.5em;
+    }
+    
+    .time {
+        font-size: 1.0em
+    }
+}
+
 .timezone {
     font-family: "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: whitesmoke;
