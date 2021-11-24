@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { TimezoneService } from './services/timezone.service';
+import { TimezoneService } from './timezone/services/timezone.service';
 
 @NgModule({
   declarations: [

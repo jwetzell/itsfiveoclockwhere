@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { DateTime } from 'luxon';
+import { Timezone, TimezoneCompare } from '../models/timezone.model';
 
 @Injectable({
   providedIn: 'root'
@@ -407,7 +409,7 @@ export class TimezoneService {
       'Pacific/Guadalcanal',
       'Pacific/Guam',
       'Pacific/Honolulu',
-      'Pacific/Kanton', // Why is this not valid?
+      // 'Pacific/Kanton', // Why is this not valid?
       'Pacific/Kiritimati',
       'Pacific/Kosrae',
       'Pacific/Kwajalein',
@@ -438,35 +440,25 @@ export class TimezoneService {
     return this.timezones
   }
 
-  public getTimeForTimezone(date: Date, timezone: string): Date | null {
-    try {
-      return new Date(date.toLocaleString("en-US", { timeZone: timezone }));
-    } catch (error) {
-      console.log(`Timezone '${timezone}' not recognized?`)
-      return null;
-    }
+  public getCurrentTimeForTimezone(timezone: string): DateTime | null {
+    
+    var dateTime = DateTime.local().setZone(timezone)
+
+    return dateTime.isValid ? dateTime : null;
+    
   }
 
-  public getCurrentTimeInTimezones(timezones: string[]): { timezone: string; date: Date; }[] {
-    var now = new Date();
-    var dates: { timezone: string; date: Date; }[] = [];
+  public getCurrentTimeInTimezones(timezones: string[]): Timezone[] {
+    var dates: Timezone[] = [];
 
     this.timezones.forEach(element => {
-      var date = this.getTimeForTimezone(now,element);
+      var date = this.getCurrentTimeForTimezone(element);
       if(date != null){
-        dates.push({ timezone: element, date: date })
+        dates.push({ name: element, time: date })
       }
     });
 
-    dates.sort((a, b) => {
-      if (a.date > b.date) {
-        return 1;
-      } else if (a.date < b.date) {
-        return -1;
-      } else {
-        return 0;
-      }
-    })
+    dates.sort(TimezoneCompare)
 
     return dates;
 

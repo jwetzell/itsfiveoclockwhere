@@ -3,19 +3,19 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    height: 100%;
     width: 100%;
-    background: #2e2e2e;
     margin: 0;
     padding: 0;
 }
 
 .timezone {
     font-family: "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: whitesmoke
+    color: whitesmoke;
+    margin-bottom: 0;
 }
 
 .time {
     font-family: "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: whitesmoke
+    color: whitesmoke;
+    margin-top: 0;
 }
