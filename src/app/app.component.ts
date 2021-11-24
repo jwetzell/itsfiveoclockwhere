@@ -12,7 +12,6 @@ import { TimezoneService } from './services/timezone.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'itsfiveoclockwhere';
 
   dates: any[] = []
 

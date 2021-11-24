@@ -407,7 +407,7 @@ export class TimezoneService {
       'Pacific/Guadalcanal',
       'Pacific/Guam',
       'Pacific/Honolulu',
-      // 'Pacific/Kanton', ?? Why is this not valid?
+      'Pacific/Kanton', // Why is this not valid?
       'Pacific/Kiritimati',
       'Pacific/Kosrae',
       'Pacific/Kwajalein',
