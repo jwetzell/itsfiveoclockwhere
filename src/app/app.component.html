@@ -1,7 +1,6 @@
-<div class="container">
-    <ng-container *ngFor="let timezone of fiveOclocks">
-      <h1 class="timezone">{{timezone.name}}</h1>
-      <h2 class="time">{{timezone.time?.toFormat('tt')}}</h2>
-    </ng-container>
-</div>
-
+<ng-container *ngFor="let timezone of fiveOclocks">
+  <div class="container">
+    <h1 class="timezone">{{timezone.name}}</h1>
+    <h2 class="time">{{timezone.time?.toFormat('tt')}}</h2>
+  </div>
+</ng-container>
