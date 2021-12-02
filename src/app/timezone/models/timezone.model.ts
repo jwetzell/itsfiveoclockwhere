@@ -34,8 +34,6 @@ export function GetClosestTimezoneFrom(timezone: string, timezones: Timezone[]) 
     timezones.forEach(element => {
         var location2 = timezoneMap[element.name]
 
-        var radius = 6371;
-
         var deltaLat = (location2.lat - location1.lat) * (Math.PI / 180);
         var deltaLong = (location2.long - location2.long) * (Math.PI / 180);
 
@@ -43,10 +41,10 @@ export function GetClosestTimezoneFrom(timezone: string, timezones: Timezone[]) 
             Math.cos(location1.lat * (Math.PI / 180)) * Math.cos(location2.lat * (Math.PI / 180)) *
             Math.sin(deltaLong / 2) * Math.sin(deltaLong / 2);
 
-        var distance = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a)) * radius;
+        var dist = Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
-        if (distance < closestDist) {
-            closestDist = distance
+        if (dist < closestDist) {
+            closestDist = dist
             closestTimezone = element
         }
     });
@@ -75,47 +73,47 @@ export var timezoneMap: { [key: string]: TimezoneLocation } = {
     'Africa/Bissau': { lat: 11.8632, long: -15.5843 },
     'Africa/Blantyre': { lat: -15.7667, long: 35.0168 },
     'Africa/Brazzaville': { lat: -4.2634, long: 15.2429 },
-    'Africa/Bujumbura': { lat: 0, long: 0 },
+    'Africa/Bujumbura': { lat: -3.3614, long: 29.3599 },
     'Africa/Cairo': { lat: 30.0444, long: 31.2357 },
-    'Africa/Casablanca': { lat: 0, long: 0 },
-    'Africa/Ceuta': { lat: 0, long: 0 },
-    'Africa/Conakry': { lat: 0, long: 0 },
-    'Africa/Dakar': { lat: 0, long: 0 },
-    'Africa/Dar_es_Salaam': { lat: 0, long: 0 },
-    'Africa/Djibouti': { lat: 0, long: 0 },
-    'Africa/Douala': { lat: 0, long: 0 },
-    'Africa/El_Aaiun': { lat: 0, long: 0 },
-    'Africa/Freetown': { lat: 0, long: 0 },
-    'Africa/Gaborone': { lat: 0, long: 0 },
-    'Africa/Harare': { lat: 0, long: 0 },
-    'Africa/Johannesburg': { lat: 0, long: 0 },
-    'Africa/Juba': { lat: 0, long: 0 },
-    'Africa/Kampala': { lat: 0, long: 0 },
-    'Africa/Khartoum': { lat: 0, long: 0 },
-    'Africa/Kigali': { lat: 0, long: 0 },
-    'Africa/Kinshasa': { lat: 0, long: 0 },
-    'Africa/Lagos': { lat: 0, long: 0 },
-    'Africa/Libreville': { lat: 0, long: 0 },
-    'Africa/Lome': { lat: 0, long: 0 },
-    'Africa/Luanda': { lat: 0, long: 0 },
-    'Africa/Lubumbashi': { lat: 0, long: 0 },
-    'Africa/Lusaka': { lat: 0, long: 0 },
-    'Africa/Malabo': { lat: 0, long: 0 },
-    'Africa/Maputo': { lat: 0, long: 0 },
-    'Africa/Maseru': { lat: 0, long: 0 },
-    'Africa/Mbabane': { lat: 0, long: 0 },
-    'Africa/Mogadishu': { lat: 0, long: 0 },
-    'Africa/Monrovia': { lat: 0, long: 0 },
-    'Africa/Nairobi': { lat: 0, long: 0 },
-    'Africa/Ndjamena': { lat: 0, long: 0 },
-    'Africa/Niamey': { lat: 0, long: 0 },
-    'Africa/Nouakchott': { lat: 0, long: 0 },
-    'Africa/Ouagadougou': { lat: 0, long: 0 },
-    'Africa/Porto-Novo': { lat: 0, long: 0 },
-    'Africa/Sao_Tome': { lat: 0, long: 0 },
-    'Africa/Tripoli': { lat: 0, long: 0 },
-    'Africa/Tunis': { lat: 0, long: 0 },
-    'Africa/Windhoek': { lat: 0, long: 0 },
+    'Africa/Casablanca': { lat: 33.5731, long: -7.5898 },
+    'Africa/Ceuta': { lat: 35.8894, long: -5.3213 },
+    'Africa/Conakry': { lat: 9.6412, long: -13.5784 },
+    'Africa/Dakar': { lat: 14.7167, long: -17.4677 },
+    'Africa/Dar_es_Salaam': { lat: -6.7924, long: 39.2083 },
+    'Africa/Djibouti': { lat: 11.5721, long: 43.1456 },
+    'Africa/Douala': { lat: 4.0511, long: 9.7679 },
+    'Africa/El_Aaiun': { lat: 27.1500, long: -13.1991 },
+    'Africa/Freetown': { lat: 8.4657, long: -13.2317 },
+    'Africa/Gaborone': { lat: -24.6282, long: 25.9231 },
+    'Africa/Harare': { lat: -17.8216, long: 31.0492 },
+    'Africa/Johannesburg': { lat: -26.2041, long: 28.0473 },
+    'Africa/Juba': { lat: 4.8594, long: 31.5713 },
+    'Africa/Kampala': { lat: 0.3476, long: 32.5825 },
+    'Africa/Khartoum': { lat: 15.5007, long: 32.5599 },
+    'Africa/Kigali': { lat: -1.9579, long: 30.1127 },
+    'Africa/Kinshasa': { lat: -4.4419, long: 15.2663 },
+    'Africa/Lagos': { lat: 6.5244, long: 3.3792 },
+    'Africa/Libreville': { lat: 0.4162, long: 9.4673 },
+    'Africa/Lome': { lat: 6.1256, long: 1.2254 },
+    'Africa/Luanda': { lat: -8.8147, long: 13.2302 },
+    'Africa/Lubumbashi': { lat: -11.6876, long: 27.5026 },
+    'Africa/Lusaka': { lat: -15.3875, long: 28.3228 },
+    'Africa/Malabo': { lat: 3.7550, long: 8.7821 },
+    'Africa/Maputo': { lat: -25.9692, long: 32.5732 },
+    'Africa/Maseru': { lat: -29.3151, long: 27.4869 },
+    'Africa/Mbabane': { lat: -26.3054, long: 31.1367 },
+    'Africa/Mogadishu': { lat: 2.0469, long: 45.3182 },      
+    'Africa/Monrovia': { lat: 6.3156, long: -10.8074 },    
+    'Africa/Nairobi': {lat: -1.2921, long: 36.8219},
+    'Africa/Ndjamena': { lat: 12.1348, long: 15.0557 },
+    'Africa/Niamey': { lat: 13.5116, long: 2.1254 },
+    'Africa/Nouakchott': { lat: 18.0735, long: -15.9582 },
+    'Africa/Ouagadougou': { lat: 12.3714, long: -1.5197 },
+    'Africa/Porto-Novo': { lat: 6.4969, long: 2.6289 },
+    'Africa/Sao_Tome': { lat: 0.1864, long: 6.6131 },
+    'Africa/Tripoli': { lat: 32.8872, long: 13.1913 },
+    'Africa/Tunis': { lat: 36.8065, long: 10.1815 },
+    'Africa/Windhoek': { lat: -22.5609, long: 17.0658 },
     'America/Adak': { lat: 0, long: 0 },
     'America/Anchorage': { lat: 0, long: 0 },
     'America/Anguilla': { lat: 0, long: 0 },
