@@ -1,6 +1,4 @@
-<ng-container *ngFor="let timezone of fiveOclocks">
-  <div class="container">
-    <h1 class="timezone">{{timezone.name}}</h1>
-    <h2 class="time">{{timezone.time?.toFormat('tt')}}</h2>
-  </div>
-</ng-container>
+<div *ngIf="fiveOclock" class="single-container">
+  <h1 class="timezone">{{fiveOclock.name}}</h1>
+  <h2 class="time">{{fiveOclock.time?.toFormat('tt')}}</h2>
+</div>
