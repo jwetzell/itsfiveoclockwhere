@@ -19,7 +19,7 @@ export class FiveoclockComponent implements OnInit {
 
   constructor(private timezoneService: TimezoneService){
     this.timezones = this.timezoneService.getTimezones()
-    var second = interval(10000).pipe(startWith(0))
+    var second = interval(1000).pipe(startWith(0))
 
     second.subscribe(()=>{
       this.fiveOclocks = [];
