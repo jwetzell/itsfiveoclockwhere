@@ -1,7 +1,7 @@
-<ng-container *ngIf="justClosest; else listView">
-    <app-timezone-single *ngIf="fiveOclock" [timezone]="fiveOclock" (click)="toggleView()"></app-timezone-single>
-</ng-container>
-
-<ng-template #listView>
-    <app-timezone-list *ngIf="fiveOclocks" [timezones]="fiveOclocks" (click)="toggleView()"></app-timezone-list>
-</ng-template>
+<app-timezone-list 
+    *ngIf="fiveOclocks" 
+    [timezones]="fiveOclocks" 
+    [closest]="fiveOclock" 
+    [showAll]="showAll" 
+    (click)="toggleView()">
+</app-timezone-list>

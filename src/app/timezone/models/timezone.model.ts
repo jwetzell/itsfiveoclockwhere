@@ -26,7 +26,7 @@ export function TimezoneCompare(a: Timezone, b: Timezone) {
 }
 
 // http://www.movable-type.co.uk/scripts/latlong.html
-export function GetClosestTimezoneFrom(timezone: string, timezones: Timezone[]) {
+export function GetClosestTimezoneFrom(timezone: string, timezones: Timezone[]): Timezone | undefined{
     var location1 = timezoneMap[timezone]
     var closestDist = Number.MAX_SAFE_INTEGER
     var closestTimezone: Timezone | undefined = undefined

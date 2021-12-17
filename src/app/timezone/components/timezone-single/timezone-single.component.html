@@ -1,4 +1,4 @@
-<div class="background">
+<div class="background" [@displayState]="state">
     <ng-container *ngIf="timezone">
         <div class="container">
             <h1 class="timezone">{{timezone.name}}</h1>

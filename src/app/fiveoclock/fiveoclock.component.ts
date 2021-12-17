@@ -13,7 +13,7 @@ export class FiveoclockComponent implements OnInit {
   fiveOclocks: Timezone[] = [];
   fiveOclock: Timezone | undefined;
 
-  justClosest: boolean = true;
+  showAll: boolean = false;
 
   timezones: string[] =[]
 
@@ -36,7 +36,7 @@ export class FiveoclockComponent implements OnInit {
   ngOnInit(): void { }
 
   toggleView(){
-    this.justClosest = !this.justClosest
+    this.showAll = !this.showAll
   }
 
 }
