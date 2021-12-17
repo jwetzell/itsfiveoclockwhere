@@ -31,13 +31,11 @@ export class TimezoneService {
     timezones.forEach(element => {
       var date = this.getCurrentTimeForTimezone(element);
       if (date != null) {
-        dates.push({ name: element, time: date })
+        const timezone = { name: element, time: date }
+        dates.push(timezone)
       }
     });
-
-    dates.sort(TimezoneCompare)
-
-    return dates;
-
+    
+    return dates.sort(TimezoneCompare);
   }
 }

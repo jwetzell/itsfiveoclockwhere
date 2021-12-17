@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { interval, Observable } from 'rxjs';
 import { Timezone } from '../../models/timezone.model';
 import { TimezoneService } from '../../services/timezone.service';
@@ -10,23 +10,12 @@ import { TimezoneService } from '../../services/timezone.service';
 })
 export class TimezoneListComponent implements OnInit {
 
-  fiveOclocks: Timezone[] = [];
+  @Input() timezones: Timezone[] = [];
 
-  constructor(private timezoneService: TimezoneService){
-    var second = interval(1000)
-
-    second.subscribe(()=>{
-      this.fiveOclocks = [];
-      this.timezoneService.getCurrentTimeInTimezones(this.timezoneService.getTimezones()).forEach((timezoneObj)=>{
-        if(timezoneObj.time?.hour === 17){
-          this.fiveOclocks.push(timezoneObj);
-        }
-      })
-    })
-
-  }
+  constructor(){}
 
   ngOnInit(): void {
   }
 
 }
+

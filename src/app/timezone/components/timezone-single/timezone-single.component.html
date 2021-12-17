@@ -1,5 +1,5 @@
 <div class="background">
-    <ng-container *ngFor="let timezone of timezones">
+    <ng-container *ngIf="timezone">
         <div class="container">
             <h1 class="timezone">{{timezone.name}}</h1>
             <h2 class="time">{{timezone.time?.toFormat('tt')}}</h2>

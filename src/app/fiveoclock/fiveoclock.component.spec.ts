@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TimezoneClosestComponent } from './timezone-closest.component';
+import { FiveoclockComponent } from './fiveoclock.component';
 
-describe('TimezoneClosestComponent', () => {
-  let component: TimezoneClosestComponent;
-  let fixture: ComponentFixture<TimezoneClosestComponent>;
+describe('FiveoclockComponent', () => {
+  let component: FiveoclockComponent;
+  let fixture: ComponentFixture<FiveoclockComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TimezoneClosestComponent ]
+      declarations: [ FiveoclockComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TimezoneClosestComponent);
+    fixture = TestBed.createComponent(FiveoclockComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
