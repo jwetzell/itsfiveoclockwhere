@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { interval, startWith } from 'rxjs';
+import { GoogleAnalyticsService } from '../services/google-analytics.service';
 import { GetClosestTimezoneFrom, Timezone, TimezoneCompare, TimezoneList } from '../timezone/models/timezone.model';
 import { TimezoneService } from '../timezone/services/timezone.service';
 
@@ -17,7 +18,10 @@ export class FiveoclockComponent implements OnInit {
 
   timezones: string[] =[]
 
-  constructor(private timezoneService: TimezoneService){
+  constructor(
+    private timezoneService: TimezoneService,
+    private googleAnalyticsService: GoogleAnalyticsService
+    ){
     this.timezones = this.timezoneService.getTimezones()
     var second = interval(1000).pipe(startWith(0))
 
@@ -36,7 +40,17 @@ export class FiveoclockComponent implements OnInit {
   ngOnInit(): void { }
 
   toggleView(){
+    if(this.showAll){
+      this.googleAnalyticsService.emitEvent('select_content', {
+        'event_label' : 'timezone_closest',
+      })
+    }else{
+      this.googleAnalyticsService.emitEvent('select_content', {
+        'event_label' : 'timezone_list',
+      })
+    }
     this.showAll = !this.showAll
+
   }
 
 }
