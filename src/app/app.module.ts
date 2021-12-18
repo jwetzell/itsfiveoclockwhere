@@ -9,7 +9,6 @@ import { TimezoneListComponent } from './timezone/components/timezone-list/timez
 import { FiveoclockComponent } from './fiveoclock/fiveoclock.component';
 import { TimezoneSingleComponent } from './timezone/components/timezone-single/timezone-single.component';
 import { GoogleAnalyticsService } from './services/google-analytics.service';
-import { AdsenseModule } from 'ng2-adsense';
 @NgModule({
   declarations: [
     AppComponent,
@@ -20,10 +19,7 @@ import { AdsenseModule } from 'ng2-adsense';
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
-    AdsenseModule.forRoot({
-      adClient: 'ca-pub-2890427503516323',
-    })
+    AppRoutingModule
   ],
   providers: [
     TimezoneService,
