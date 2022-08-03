@@ -1,0 +1,24 @@
+kind: pipeline
+name: default
+steps:
+- name: build
+  image: node:12.22.12-buster-slim
+  commands:
+  - npm install
+  - npm run build
+  
+- name: deploy
+  image: cschlosser/drone-ftps
+  environment:
+    FTP_USERNAME:
+      from_secret: ftp_username
+    FTP_PASSWORD:
+      from_secret: ftp_password
+    PLUGIN_HOSTNAME: ftp.itsfiveoclockwhere.com:21
+    PLUGIN_SRC_DIR: /dist/itsfiveoclockwhere
+    PLUGIN_SECURE: true
+    PLUGIN_VERIFY: false
+    PLUGIN_CLEAN_DIR: true
+  when:
+    branch: 
+      - master
