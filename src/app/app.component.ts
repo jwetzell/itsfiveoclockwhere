@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
+import { interval, startWith } from 'rxjs';
+import { GoogleAnalyticsService } from './services/google-analytics.service';
+import { Timezone, GetClosestTimezoneFrom } from './timezone/models/timezone.model';
+import { TimezoneService } from './timezone/services/timezone.service';
 
 declare let gtag: Function;
 @Component({
@@ -9,13 +13,53 @@ declare let gtag: Function;
 })
 export class AppComponent {
 
-  constructor(public router: Router) {
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        gtag('config', 'G-48B6CKS0V6',{
-            'page_path': event.urlAfterRedirects
-          });
-      }
+  fiveOclocks: Timezone[] = [];
+  fiveOclock: Timezone | undefined;
+
+  showAll: boolean = false;
+
+  timezones: string[] =[]
+
+  constructor(
+    private timezoneService: TimezoneService,
+    private googleAnalyticsService: GoogleAnalyticsService,
+    private router:Router
+    ){
+      this.router.events.subscribe(event => {
+        if (event instanceof NavigationEnd) {
+          gtag('config', 'G-48B6CKS0V6',{
+              'page_path': event.urlAfterRedirects
+            });
+        }
+      })
+    this.timezones = this.timezoneService.getTimezones()
+    var second = interval(1000).pipe(startWith(0))
+
+    second.subscribe(()=>{
+      this.fiveOclocks = [];
+      this.timezoneService.getCurrentTimeInTimezones(this.timezones).forEach((timezoneObj)=>{
+        if(timezoneObj.time?.hour === 17){
+          this.fiveOclocks.push(timezoneObj);
+        }
+      })
+      this.fiveOclock = GetClosestTimezoneFrom(this.timezoneService.getCurrentTimezone(), this.fiveOclocks)
     })
+
+  }
+
+  ngOnInit(): void { }
+
+  toggleView(){
+    if(this.showAll){
+      this.googleAnalyticsService.emitEvent('select_content', {
+        'event_label' : 'timezone_closest',
+      })
+    }else{
+      this.googleAnalyticsService.emitEvent('select_content', {
+        'event_label' : 'timezone_list',
+      })
+    }
+    this.showAll = !this.showAll
+
   }
 }
