@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
 import { interval, startWith } from 'rxjs';
 import { GoogleAnalyticsService } from './services/google-analytics.service';
 import { Timezone, GetClosestTimezoneFrom } from './timezone/models/timezone.model';
@@ -23,15 +22,7 @@ export class AppComponent {
   constructor(
     private timezoneService: TimezoneService,
     private googleAnalyticsService: GoogleAnalyticsService,
-    private router:Router
     ){
-      this.router.events.subscribe(event => {
-        if (event instanceof NavigationEnd) {
-          gtag('config', 'G-48B6CKS0V6',{
-              'page_path': event.urlAfterRedirects
-            });
-        }
-      })
     this.timezones = this.timezoneService.getTimezones()
     var second = interval(1000).pipe(startWith(0))
 
@@ -47,7 +38,11 @@ export class AppComponent {
 
   }
 
-  ngOnInit(): void { }
+  ngOnInit(): void { 
+    gtag('config', 'G-48B6CKS0V6',{
+      'page_path': '/'
+    });
+  }
 
   toggleView(){
     if(this.showAll){
