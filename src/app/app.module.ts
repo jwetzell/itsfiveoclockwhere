@@ -7,13 +7,11 @@ import { TimezoneService } from './timezone/services/timezone.service';
 import { AppRoutingModule } from './app-routing.module';
 import { TimezoneListComponent } from './timezone/components/timezone-list/timezone-list.component';
 import { FiveoclockComponent } from './fiveoclock/fiveoclock.component';
-import { TimezoneSingleComponent } from './timezone/components/timezone-single/timezone-single.component';
 import { GoogleAnalyticsService } from './services/google-analytics.service';
 @NgModule({
   declarations: [
     AppComponent,
     TimezoneListComponent,
-    TimezoneSingleComponent,
     FiveoclockComponent
   ],
   imports: [
