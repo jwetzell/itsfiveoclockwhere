@@ -3,9 +3,9 @@ type: kubernetes
 name: default
 steps:
 - name: build
-  image: node:12.22.12-buster-slim
+  image: node:18.12.0-alpine
   commands:
-  - npm install
+  - npm ci
   - npm run build
   
 - name: deploy
