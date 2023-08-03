@@ -1,0 +1,30 @@
+name: publish
+on:
+  push:
+    branches:
+      - master
+jobs:
+  build-publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: install dependencies
+        run: npm install
+        
+      - name: build
+        run: npm run build
+
+      - name: publish
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{secrets.FTP_HOST}}
+          username: ${{secrets.FTP_USERNAME}}
+          password: ${{secrets.FTP_PASSWORD}}
+          local-dir: ./dist/itsfiveoclockwhere/
+          port: 21
+          protocol: ftps
