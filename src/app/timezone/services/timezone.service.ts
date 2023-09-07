@@ -9,7 +9,7 @@ export class TimezoneService {
 
   constructor() { }
 
-  public getCurrentTimezone() {
+  public getCurrentTimezone() : string | null {
     return DateTime.now().zoneName
   }
 
