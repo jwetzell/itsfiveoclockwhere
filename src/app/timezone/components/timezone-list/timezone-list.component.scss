@@ -1,57 +1,57 @@
 .container {
-    display:flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .single-container {
-    display:flex;
-    align-items: center;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-@media (max-width: 350px) { 
-    .timezone {
-        font-size: 1.0em;
-    }
-    
-    .time {
-        font-size: 0.5em
-    }
+@media (max-width: 350px) {
+  .timezone {
+    font-size: 1em;
+  }
+
+  .time {
+    font-size: 0.5em;
+  }
 }
 
-@media (min-width:350px) and (max-width: 500px) { 
-    .timezone {
-        font-size: 1.5em;
-    }
-    
-    .time {
-        font-size: 1.0em
-    }
+@media (min-width: 350px) and (max-width: 500px) {
+  .timezone {
+    font-size: 1.5em;
+  }
+
+  .time {
+    font-size: 1em;
+  }
 }
 
 .timezone {
-    font-family: "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: whitesmoke;
-    margin-bottom: 0;
+  font-family: 'Open Sans', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: whitesmoke;
+  margin-bottom: 0;
 }
 
 .time {
-    font-family: "Open Sans", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
-    color: whitesmoke;
-    margin-top: 0;
+  font-family: 'Open Sans', 'HelveticaNeue', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  color: whitesmoke;
+  margin-top: 0;
 }
 
 .background {
-    background: #2e2e2e;
-    height: 100%;
+  background: #2e2e2e;
+  height: 100%;
 }

@@ -1,14 +1,21 @@
-<div class="background" [@displayState]="state" (@displayState.start)="animationEvent($event)" (@displayState.done)="animationEvent($event)">
-    <ng-container *ngIf="showAllItems; else single" >
-        <div *ngFor="let timezone of timezones" class="container" [ngStyle]="{'height': timezones.length == 1 ? '100%' : 'auto'}">
-            <h1 class="timezone">{{timezone.name.replace('_', ' ')}}</h1>
-            <h2 class="time">{{timezone.time?.toFormat('tt')}}</h2>
-        </div>
-    </ng-container>
-    <ng-template #single >
-        <div *ngIf="closest" class="single-container">
-            <h1 class="timezone">{{closest.name.replace('_', ' ')}}</h1>
-            <h2 class="time">{{closest.time?.toFormat('tt')}}</h2>
-        </div>
-    </ng-template>
+<div
+  class="background"
+  [@displayState]="state"
+  (@displayState.start)="animationEvent($event)"
+  (@displayState.done)="animationEvent($event)">
+  <ng-container *ngIf="showAllItems; else single">
+    <div
+      *ngFor="let timezone of timezones"
+      class="container"
+      [ngStyle]="{ height: timezones.length == 1 ? '100%' : 'auto' }">
+      <h1 class="timezone">{{ timezone.name.replace('_', ' ') }}</h1>
+      <h2 class="time">{{ timezone.time?.toFormat('tt') }}</h2>
+    </div>
+  </ng-container>
+  <ng-template #single>
+    <div *ngIf="closest" class="single-container">
+      <h1 class="timezone">{{ closest.name.replace('_', ' ') }}</h1>
+      <h2 class="time">{{ closest.time?.toFormat('tt') }}</h2>
+    </div>
+  </ng-template>
 </div>
