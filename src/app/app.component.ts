@@ -47,15 +47,6 @@ export class AppComponent {
   }
 
   toggleView() {
-    if (this.showAll) {
-      this.googleAnalyticsService.emitEvent('select_content', {
-        event_label: 'timezone_closest',
-      });
-    } else {
-      this.googleAnalyticsService.emitEvent('select_content', {
-        event_label: 'timezone_list',
-      });
-    }
     this.showAll = !this.showAll;
   }
 }
