@@ -25,6 +25,6 @@ jobs:
           server: ${{secrets.FTP_HOST}}
           username: ${{secrets.FTP_USERNAME}}
           password: ${{secrets.FTP_PASSWORD}}
-          local-dir: ./dist/itsfiveoclockwhere/browser
+          local-dir: ./dist/itsfiveoclockwhere/browser/
           port: 21
           protocol: ftps
