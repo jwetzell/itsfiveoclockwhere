@@ -1,0 +1,15 @@
+version: 2
+updates:
+  # groups
+  - package-ecosystem: 'npm'
+    directory: '/'
+    schedule:
+      interval: 'weekly'
+    groups:
+      angular:
+        applies-to: version-updates
+        patterns:
+          - '@angular*'
+        update-types:
+          - 'minor'
+          - 'patch'
