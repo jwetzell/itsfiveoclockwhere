@@ -2,7 +2,7 @@ name: Check angular builds
 on:
   pull_request:
     branches:
-      - main
+      - master
 jobs:
   build-webui:
     runs-on: ubuntu-latest
