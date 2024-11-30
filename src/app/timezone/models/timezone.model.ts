@@ -26,24 +26,24 @@ export function TimezoneCompare(a: Timezone, b: Timezone) {
 
 // http://www.movable-type.co.uk/scripts/latlong.html
 export function GetClosestTimezoneFrom(timezone: string, timezones: Timezone[]): Timezone | undefined {
-  var location1 = timezoneMap[timezone];
-  var closestDist = Number.MAX_SAFE_INTEGER;
-  var closestTimezone: Timezone | undefined = undefined;
+  const location1 = timezoneMap[timezone];
+  let closestDist = Number.MAX_SAFE_INTEGER;
+  let closestTimezone: Timezone | undefined = undefined;
 
   timezones.forEach((timezone) => {
-    var location2 = timezoneMap[timezone.name];
+    const location2 = timezoneMap[timezone.name];
 
-    var deltaLat = (location2.lat - location1.lat) * (Math.PI / 180);
-    var deltaLong = (location2.long - location1.long) * (Math.PI / 180);
+    const deltaLat = (location2.lat - location1.lat) * (Math.PI / 180);
+    const deltaLong = (location2.long - location1.long) * (Math.PI / 180);
 
-    var a =
+    const a =
       Math.sin(deltaLat / 2) * Math.sin(deltaLat / 2) +
       Math.cos(location1.lat * (Math.PI / 180)) *
         Math.cos(location2.lat * (Math.PI / 180)) *
         Math.sin(deltaLong / 2) *
         Math.sin(deltaLong / 2);
 
-    var dist = Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const dist = Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
     if (dist < closestDist) {
       closestDist = dist;
@@ -64,7 +64,7 @@ export interface TimezoneLocation {
 }
 
 //TODO: This still needs to be fully populated
-export var timezoneMap: { [key: string]: TimezoneLocation } = {
+export const timezoneMap: { [key: string]: TimezoneLocation } = {
   'Africa/Abidjan': { lat: 5.359952, long: -4.008256 },
   'Africa/Accra': { lat: 5.603717, long: -0.186964 },
   'Africa/Addis_Ababa': { lat: 9.03314, long: 38.75008 },

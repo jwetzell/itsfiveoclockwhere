@@ -17,16 +17,16 @@ export class TimezoneService {
   }
 
   public getCurrentTimeForTimezone(timezone: string): DateTime | null {
-    var dateTime = DateTime.local().setZone(timezone);
+    const dateTime = DateTime.local().setZone(timezone);
 
     return dateTime.isValid ? dateTime : null;
   }
 
   public getCurrentTimeInTimezones(timezones: string[]): Timezone[] {
-    var dates: Timezone[] = [];
+    const dates: Timezone[] = [];
 
     timezones.forEach((element) => {
-      var date = this.getCurrentTimeForTimezone(element);
+      const date = this.getCurrentTimeForTimezone(element);
       if (date != null) {
         const timezone = { name: element, time: date };
         dates.push(timezone);

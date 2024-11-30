@@ -24,7 +24,7 @@ export class AppComponent {
     if (currentTimezone) {
       this.timezones = this.timezoneService.getTimezones();
 
-      var second = interval(1000).pipe(startWith(0));
+      const second = interval(1000).pipe(startWith(0));
 
       second.subscribe(() => {
         this.fiveOclocks = [];
