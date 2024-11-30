@@ -3,22 +3,28 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 import { Timezone } from '../../models/timezone.model';
 
 @Component({
-    selector: 'app-timezone-list',
-    templateUrl: './timezone-list.component.html',
-    styleUrls: ['./timezone-list.component.scss'],
-    animations: [
-        trigger('displayState', [
-            state('show', style({
-                opacity: 1,
-            })),
-            state('hide', style({
-                opacity: 0,
-            })),
-            transition('show=>hide', animate('450ms ease-out')),
-            transition('hide=>show', animate('450ms ease-in')),
-        ]),
-    ],
-    standalone: false
+  selector: 'app-timezone-list',
+  templateUrl: './timezone-list.component.html',
+  styleUrls: ['./timezone-list.component.scss'],
+  animations: [
+    trigger('displayState', [
+      state(
+        'show',
+        style({
+          opacity: 1,
+        })
+      ),
+      state(
+        'hide',
+        style({
+          opacity: 0,
+        })
+      ),
+      transition('show=>hide', animate('450ms ease-out')),
+      transition('hide=>show', animate('450ms ease-in')),
+    ]),
+  ],
+  standalone: false,
 })
 export class TimezoneListComponent implements OnInit, OnChanges {
   @Input() timezones: Timezone[] = [];

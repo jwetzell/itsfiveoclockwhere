@@ -3,14 +3,12 @@ import { Injectable } from '@angular/core';
 declare let gtag: Function;
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class GoogleAnalyticsService {
-
-  constructor() { }
+  constructor() {}
 
   public emitEvent(name: string, event: any) {
-    gtag('event', name, event)
+    gtag('event', name, event);
   }
-
 }
