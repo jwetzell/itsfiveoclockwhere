@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { interval, startWith } from 'rxjs';
-import { GoogleAnalyticsService } from './services/google-analytics.service';
 import { GetClosestTimezoneFrom, Timezone } from './timezone/models/timezone.model';
 import { TimezoneService } from './timezone/services/timezone.service';
 
@@ -21,7 +20,6 @@ export class AppComponent {
 
   constructor(
     private timezoneService: TimezoneService,
-    private googleAnalyticsService: GoogleAnalyticsService
   ) {
     const currentTimezone = this.timezoneService.getCurrentTimezone();
     if (currentTimezone) {
