@@ -3,7 +3,6 @@ import { interval, startWith } from 'rxjs';
 import { GetClosestTimezoneFrom, Timezone } from './timezone/models/timezone.model';
 import { TimezoneService } from './timezone/services/timezone.service';
 
-declare let gtag: Function;
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -37,12 +36,6 @@ export class AppComponent {
         this.fiveOclock = GetClosestTimezoneFrom(currentTimezone, this.fiveOclocks);
       });
     }
-  }
-
-  ngOnInit(): void {
-    gtag('config', 'G-48B6CKS0V6', {
-      page_path: '/',
-    });
   }
 
   toggleView() {
