@@ -25,7 +25,7 @@
     "@angular/cli": "19.2.11",
     "@angular/compiler-cli": "19.2.10",
     "@types/luxon": "3.6.2",
-    "@types/node": "22.15.17",
+    "@types/node": "22.15.19",
     "prettier": "3.5.3",
     "typescript": "5.8.3"
   }
