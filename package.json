@@ -24,7 +24,7 @@
     "@angular/build": "^20.1.5",
     "@angular/cli": "20.1.5",
     "@angular/compiler-cli": "20.1.6",
-    "@types/luxon": "3.6.2",
+    "@types/luxon": "3.7.1",
     "@types/node": "24.2.1",
     "prettier": "3.6.2",
     "typescript": "5.8.3"
