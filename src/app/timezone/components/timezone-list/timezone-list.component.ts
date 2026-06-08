@@ -1,5 +1,5 @@
 import { animate, state, style, transition, trigger } from '@angular/animations';
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, ChangeDetectionStrategy } from '@angular/core';
 import { Timezone } from '../../models/timezone.model';
 
 @Component({
@@ -24,6 +24,7 @@ import { Timezone } from '../../models/timezone.model';
       transition('hide=>show', animate('450ms ease-in')),
     ]),
   ],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class TimezoneListComponent implements OnInit, OnChanges {

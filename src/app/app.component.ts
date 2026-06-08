@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { interval, startWith } from 'rxjs';
 import { GetClosestTimezoneFrom, Timezone } from './timezone/models/timezone.model';
 import { TimezoneService } from './timezone/services/timezone.service';
@@ -7,6 +7,7 @@ import { TimezoneService } from './timezone/services/timezone.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Eager,
   standalone: false,
 })
 export class AppComponent {
@@ -17,9 +18,7 @@ export class AppComponent {
 
   timezones: string[] = [];
 
-  constructor(
-    private timezoneService: TimezoneService,
-  ) {
+  constructor(private timezoneService: TimezoneService) {
     const currentTimezone = this.timezoneService.getCurrentTimezone();
     if (currentTimezone) {
       this.timezones = this.timezoneService.getTimezones();
